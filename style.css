@@ -1,0 +1,358 @@
+/* ==========================================================
+   Dancing with the SARs | NASA Space Apps
+   Calm earth-observation theme: deep teal, sage, sand
+   ========================================================== */
+
+:root {
+    --ink: #1f3a3d;
+    --ink-soft: #4d6669;
+    --teal-900: #0f2f33;
+    --teal-700: #1d5a5e;
+    --teal-500: #3a8a86;
+    --sage: #a9cbbf;
+    --mist: #e6f0ec;
+    --sand: #e9d9b8;
+    --clay: #c98f6b;
+    --bg: #f5f8f6;
+    --card: #ffffff;
+    --radius: 22px;
+    --shadow: 0 10px 30px rgba(15, 47, 51, 0.08);
+    --shadow-hover: 0 18px 40px rgba(15, 47, 51, 0.14);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Navbar ---------- */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.navbar {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 999px;
+    padding: 6px;
+    box-shadow: 0 8px 24px rgba(15, 47, 51, 0.12);
+    max-width: 100%;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.navbar::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-menu {
+    display: flex;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.navLinks {
+    text-decoration: none;
+    color: var(--ink-soft);
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 9px 18px;
+    border-radius: 999px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.navLinks:hover {
+    background: rgba(58, 138, 134, 0.12);
+    color: var(--teal-700);
+}
+
+.navLinks.active {
+    background: var(--teal-700);
+    color: #fff;
+}
+
+/* ---------- Sections (shared) ---------- */
+section {
+    padding: 110px 24px;
+    max-width: 1050px;
+    margin: 0 auto;
+    scroll-margin-top: 20px;
+}
+
+section h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--teal-900);
+    margin-bottom: 18px;
+    position: relative;
+    display: inline-block;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    width: 56px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--teal-500), var(--sand));
+    margin-top: 10px;
+}
+
+section p {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 760px;
+}
+
+/* ---------- Hero ---------- */
+#home {
+    max-width: none;
+    min-height: 100vh;
+    margin: 0;
+    padding: 120px 24px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(169, 203, 191, 0.28), transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(233, 217, 184, 0.18), transparent 45%),
+        linear-gradient(160deg, var(--teal-900) 0%, var(--teal-700) 55%, var(--teal-500) 100%);
+}
+
+/* radar-like rings */
+#home::before,
+#home::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    animation: pulse 9s ease-in-out infinite;
+}
+
+#home::before {
+    width: 520px;
+    height: 520px;
+    box-shadow: 0 0 0 90px rgba(255, 255, 255, 0.025),
+                0 0 0 180px rgba(255, 255, 255, 0.02);
+}
+
+#home::after {
+    width: 860px;
+    height: 860px;
+    animation-delay: -4s;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1);    opacity: 0.9; }
+    50%      { transform: translate(-50%, -50%) scale(1.06); opacity: 0.45; }
+}
+
+#home h1,
+#home p {
+    position: relative;
+    z-index: 1;
+}
+
+#home h1 {
+    font-size: clamp(2.4rem, 7vw, 4.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 18px;
+}
+
+#home p {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    max-width: 560px;
+}
+
+/* ---------- Challenge ---------- */
+#challenge {
+    position: relative;
+}
+
+#challenge p {
+    background: var(--card);
+    padding: 30px 34px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--sage);
+}
+
+/* ---------- Solution ---------- */
+#solution {
+    max-width: none;
+    background: var(--mist);
+    padding-left: max(24px, calc((100% - 1050px) / 2));
+    padding-right: max(24px, calc((100% - 1050px) / 2));
+    border-radius: 48px;
+}
+
+#solution h2 a {
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+#solution h2 a:hover {
+    color: var(--teal-500) !important;
+}
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    color: #1f3a3d;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 26px;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 10px;
+    background-color: #e7e7e7;
+    box-shadow: 6px 6px 12px #c5c5c5;
+    transition: box-shadow 0.2s ease;
+}
+
+.btn:active {
+    box-shadow: inset 6px 6px 12px #c5c5c5, inset -6px -6px 12px #ffffff;
+}
+/* ---------- How it works ---------- */
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 26px;
+    margin-top: 34px;
+}
+
+.card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 34px 28px;
+    box-shadow: var(--shadow);
+    border-top: 4px solid var(--sage);
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+}
+
+.card:nth-child(2) { border-top-color: var(--teal-500); }
+.card:nth-child(3) { border-top-color: var(--sand); }
+
+.num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--teal-500), var(--teal-700));
+    color: #fff;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    color: var(--teal-900);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 0.97rem;
+    line-height: 1.8;
+}
+
+/* ---------- Team ---------- */
+#team {
+    text-align: center;
+    padding-bottom: 140px;
+}
+
+#team h2 {
+    margin-bottom: 30px;
+}
+
+#team p {
+    display: block;
+    max-width: 440px;
+    margin: 0 auto 14px;
+    background: var(--card);
+    color: var(--ink);
+    font-weight: 500;
+    padding: 14px 24px;
+    border-radius: 999px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+#team p:hover {
+    transform: translateY(-3px);
+    background: var(--mist);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+    section {
+        padding: 80px 18px;
+    }
+
+    .navLinks {
+        padding: 8px 13px;
+        font-size: 0.85rem;
+    }
+
+    #challenge p {
+        padding: 22px 20px;
+    }
+
+    #solution {
+        border-radius: 32px;
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    #home::before,
+    #home::after {
+        animation: none;
+    }
+
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    .card,
+    #team p {
+        transition: none;
+    }
+
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dancing with the SARS | NASA Space Apps</title>
+
+    <!-- Google Font: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <!-- Navigation Links -->
+            <div class="nav-menu">
+                <a href="#home" class="navLinks active">Home</a>
+                <a href="#challenge" class="navLinks">Challenge</a>
+                <a href="#solution" class="navLinks">Solution</a>
+                <a href="#how" class="navLinks">How it works</a>
+                <a href="#team" class="navLinks">Team</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sections -->
+      <section id="home">
+        <h1>Dancing with the SARs</h1>
+        <p>An Arduino-based solution &middot; NASA Space Apps Challenge 2026</p>
+    </section>
+
+    <section id="challenge">
+        <h2>The Challenge</h2>
+        <p>Earth's surface is constantly changing: wetlands shrink, forests burn, glaciers move and the ground shakes. These changes are hard to see, understand and explain. The challenge asks teams to use radar data from NASA's NISAR satellite mission to build an interactive tool that tracks and shows surface changes around the world.</p>
+    </section>
+
+    <section id="solution">
+    <h2><a  target="_blank" style="color: inherit;">Our Solution</a></h2>
+    <p>Our system combines radar backscatter analysis over time, radar coherence indicators and AI algorithms to produce explainable spatial results, shown on an interactive map that helps people understand ground changes.</p>
+    <a href="https://oha4bwdauzwwwsztpfhcnq.streamlit.app/" class="btn" target="_blank" rel="noopener"> solution! </a>
+</section>
+
+    <section id="how">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="card">
+                <span class="num">1</span>
+                <h3>Sense</h3>
+                <p>What data does the Arduino read?
+                The Arduino reads the distance to objects using an ultrasonic sensor that sends a pulse and measures how long the echo takes to return. A servo rotates the sensor to scan the area at different angles, and the readings are sent to the computer through USB.
+                </p>
+            </div>
+            <div class="card">
+                <span class="num">2</span>
+                <h3>Process</h3>
+                <p>What does the code do with it?
+                 The code converts the echo time into distance, pairs each distance with its servo angle, and compares scans taken at different times to detect changes. The same idea of comparing measurements over time is then applied to real SAR/InSAR data in the application.
+                </p>
+            </div>
+            <div class="card">
+                <span class="num">3</span>
+                <h3>Act</h3>
+                <p>What is the output or result?
+                    A radar-style display on the computer shows the angle, distance, and status of the scanned area, and an LED and buzzer alert when a change is detected. The prototype is used to test the application before it shows ground changes on an interactive map using satellite data.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+    <h2>Our Team</h2>
+    <p>💻🛠Areeb Osama Flatah</p>
+    <p>💻🛠 Rafeef Naif Alotaibi</p>
+    <p>💡Shatha Mohammed Obaid Al-Otaibi</p>
+   <p>💡 Dalal Muidhb Alqrny</p>
+    <p>🔎Sadeen Bokhari</p>
+</section>
+
+</body>
+
+<script>
+    // Highlight the nav link of the section currently on screen
+    const sections = document.querySelectorAll("section");
+    const links = document.querySelectorAll(".navLinks");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+
+        sections.forEach((section) => {
+            const top = section.offsetTop - 200;
+            if (window.scrollY >= top) {
+                current = section.getAttribute("id");
+            }
+        });
+
+        links.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+        });
+    });
+</script>
+
+</html>
